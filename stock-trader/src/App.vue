@@ -1,7 +1,9 @@
 <template>
     <div class="container">
         <app-header saving="900"></app-header>
-        <router-view></router-view>
+        <div class="col-xs-12">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
@@ -15,5 +17,7 @@
 </script>
 
 <style>
-
+    body {
+        padding: 30px;
+    }
 </style>
