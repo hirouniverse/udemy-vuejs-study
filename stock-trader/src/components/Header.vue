@@ -17,25 +17,25 @@
                             <a class="nav-link">Stocks</a>
                         </router-link>
                     </ul>
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link">End Day</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
+                    <ul class="navbar-nav ml-atuo">
+                        <li class="nav-item">
+                            <a class="nav-link" @click="endDay">End Day
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                        </li>
+                        <li class="nav-item" style="padding-right: 10px;">
+                            <button class="btn btn-primary" @click="save">
+                                Save
+                            </button>
+                        </li>
+                        <li class="nav-item" style="padding-left: 10px;">
+                            <button class="btn btn-primary" @click="load">
+                                Load
+                            </button>
                         </li>
                     </ul>
-                    <!--
-                    <span class="navbar-text" style="margin-left: 30px;">
-                        Fund: ${{ saving }}
-                    </span>
-                    -->
+                    <strong class="navbar-text" style="margin-left: 30px;">
+                        Fund: {{ funds | currency }}
+                    </strong>
                 </div>
             </nav>
         </header>
@@ -43,7 +43,40 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
-    props: ['saving']
+    data() {
+        return {
+            isDropdownOpen: false,
+        }
+    },
+    computed: {
+        ...mapGetters({
+            funds: 'myFunds'
+        })
+    },
+    methods: {
+        ...mapActions({
+            randmizeStocks: 'randmizeStocks',
+            fetch: 'load'
+        }),
+        endDay() {
+            this.randmizeStocks();
+        },
+        show(el) {
+            console.log(el)
+        },
+        save() {
+            const data = {
+                stocks: this.$store.getters.stocks,
+                funds: this.$store.getters.myFunds,
+                myStocks: this.$store.getters.myStocks,
+            };
+            this.$http.put('data.json', data);
+        },
+        load() {
+            this.fetch();
+        }
+    }
 }
 </script>
