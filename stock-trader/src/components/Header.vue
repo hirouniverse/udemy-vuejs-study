@@ -58,7 +58,7 @@ export default {
     methods: {
         ...mapActions({
             randmizeStocks: 'randmizeStocks',
-            fetch: 'load'
+            fetchData: 'loadData'
         }),
         endDay() {
             this.randmizeStocks();
@@ -75,7 +75,7 @@ export default {
             this.$http.put('data.json', data);
         },
         load() {
-            this.fetch();
+            this.fetchData();
         }
     }
 }
