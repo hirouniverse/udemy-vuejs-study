@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
     data () {
       return {
@@ -38,6 +39,15 @@
           email: this.email,
           password: this.password,
         }
+
+        axios.get('users.json')
+          .then(res => {
+
+          })
+          .catch(err => {
+            console.log('login error!!');
+            console.log(err);
+          });
         console.log(formData)
       }
     }

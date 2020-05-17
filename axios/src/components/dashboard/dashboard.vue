@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import axios from '../../axios-auth'
 export default {
   data() {
     return {
@@ -15,7 +16,7 @@ export default {
     };
   },
   created() {
-    axios.get('https://stock-trader-universe.firebaseio.com/users.json')
+    axios.get('users.json')
       .then(res => {
         console.log(res);
         const data = res.data;

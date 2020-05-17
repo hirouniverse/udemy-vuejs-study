@@ -69,8 +69,10 @@
 </template>
 
 <script>
-  import axios from 'axios';
-  export default {
+  // import axios from 'axios';
+  // use custom axios instance instead
+  import axios from '../../axios-auth';
+export default {
     data () {
       return {
         email: '',
@@ -104,7 +106,7 @@
           terms: this.terms
         }
         console.log(formData)
-        axios.post('https://stock-trader-universe.firebaseio.com/users.json', formData)
+        axios.post('users.json', formData)
           .then(res => console.log(res))
           .catch(err => console.log(err));
       }
