@@ -13,6 +13,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1",
+    "vuelidate": "^0.7.5",
     "vuex": "^3.0.0"
   },
   "devDependencies": {

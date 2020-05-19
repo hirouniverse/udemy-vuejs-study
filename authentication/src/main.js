@@ -21,6 +21,11 @@ const resInterceptor = axios.interceptors.response.use(res => {
 axios.interceptors.request.eject(reqInterceptor)
 axios.interceptors.response.eject(resInterceptor)
 
+
+// validation
+import Vuelidate from 'vuelidate';
+Vue.use(Vuelidate);
+
 new Vue({
   el: '#app',
   router,
